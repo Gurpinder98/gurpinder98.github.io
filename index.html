@@ -14,9 +14,11 @@
             white-space: pre-line;
             margin: 20px;
             max-width: 80ch;
+            transition: background 0.3s, color 0.3s;
+
         }
         .terminal {
-            padding: 20px;
+            padding: 10px 20px;
         }
         h1, h2,h4, p {
         margin: 0;
@@ -33,7 +35,15 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+        #toggle {
+        cursor: pointer;
+        text-decoration: underline;
+        display: inline-block;
+        margin: 0;
+        }
     </style>
+
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5YDEHJ8CF"></script>
 <script>
@@ -44,7 +54,6 @@
   gtag('config', 'G-M5YDEHJ8CF');
 </script>
 </head>
-    
 
 
 <body>
@@ -65,7 +74,28 @@
             
             window.onload = typeWriter;
     </script>
+
     <div class="terminal">
+        <span>select theme: <span id="toggle">light</span> </span>
+        <script>
+            const toggle = document.getElementById("toggle");
+            let isDark = true;
+            toggle.addEventListener("click", () => {
+            if (isDark) {
+                document.body.style.background = "white";
+                document.body.style.color = "black";
+                document.querySelectorAll("a").forEach(a => a.style.color = "#0000FF");
+                toggle.textContent = "dark";
+            } else {
+                document.body.style.background = "black";
+                document.body.style.color = "#33ff33";
+                document.querySelectorAll("a").forEach(a => a.style.color = "#33ff33");
+                toggle.textContent = "light";
+            }
+            isDark = !isDark;
+            });
+        </script>
+
         <p>
             currently: postdoctoral scientist (computational biology), earlham institute, uk (oct. 2025 - present)
             
